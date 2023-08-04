@@ -1,4 +1,4 @@
-# Projeto de estudos - Junior Brandão
+# Projeto de estudos - Cadastro de Clientes
 
 #### Formação Desenvolvedor Moderno 
 #### Módulo: Back end 
@@ -7,6 +7,8 @@
 [![N|Solid](https://jdk.java.net/images/oracle.png)](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 
 [![Build Status](src/main/java/com/eblj/cliente/assets/spring.png)](https://spring.io/projects/spring-boot)
+
+[![Intellij](src/main/java/com/eblj/cliente/assets/intellij.png)](https://spring.io/projects/spring-boot)
 ## Features: CRUD de clientes
 Você deverá entregar um projeto Spring Boot contendo um CRUD completo de web services REST para acessar um recurso de clientes, contendo as cinco operações básicas aprendidas no capítulo:
 - Busca paginada de recursos
@@ -35,6 +37,7 @@ Um cliente possui nome, CPF, renda, data de nascimento, e quantidade de filhos. 
 - [Persistência] -Spring Data JPA
 - [Database] - Spring Boot With H2 Database
 - [Dependências] - Spring Boot Maven 
+- [IDE] - IntelliJ
 
 ```
 
@@ -47,4 +50,5 @@ Um cliente possui nome, CPF, renda, data de nascimento, e quantidade de filhos. 
    [Persistência]: <https://spring.io/projects/spring-data-jpa>
    [Database]: <https://www.baeldung.com/spring-boot-h2-database/>
    [Dependências]: <https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/htmlsingle/>
+   [IDE]: <https://www.jetbrains.com/pt-br/idea//>
  
