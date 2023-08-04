@@ -39,4 +39,10 @@ public class ClientController {
     return ResponseEntity.status(HttpStatus.CREATED).body(service.insert(dto));
   }
 
+  @Transactional
+  @PutMapping("/{id}")
+  public ResponseEntity<ClientDTO> update( @PathVariable Long id,@Valid @RequestBody ClientDTO dto){
+    return ResponseEntity.ok(service.update(id,dto));
+  }
+
 }

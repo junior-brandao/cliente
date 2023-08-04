@@ -5,6 +5,7 @@ import com.eblj.cliente.entities.Client;
 import com.eblj.cliente.repositories.ClientRepository;
 import com.eblj.cliente.services.ClientService;
 import com.eblj.cliente.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -42,8 +43,15 @@ public class ClientServiceImpl implements ClientService {
   }
 
   @Override
-  public ClientDTO update(Long id, ClientDTO dto) {
-    return null;
+  @Transactional
+  public ClientDTO update(Long id,ClientDTO dto) {
+    try {
+      Client client = repository.getReferenceById(id);
+      copyDtoToEntity(dto,client);
+      return  new ClientDTO(client);
+    }catch (EntityNotFoundException e){
+      throw new ResourceNotFoundException("Recurso não encontrado");
+    }
   }
 
   @Override
