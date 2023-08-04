@@ -16,7 +16,6 @@ public class Client {
   private String name;
   private String cpf;
   private Double income;
-  @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")//salva no banco com utc
   private LocalDate birthDate;
   private Integer children;
 

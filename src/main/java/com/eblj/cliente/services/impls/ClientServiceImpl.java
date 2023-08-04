@@ -4,6 +4,7 @@ import com.eblj.cliente.dtos.ClientDTO;
 import com.eblj.cliente.entities.Client;
 import com.eblj.cliente.repositories.ClientRepository;
 import com.eblj.cliente.services.ClientService;
+import com.eblj.cliente.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,13 +25,20 @@ public class ClientServiceImpl implements ClientService {
   }
 
   @Override
+  @Transactional(readOnly = true)
   public ClientDTO findByid(Long id) {
-    return null;
+    Client client = repository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Recurso não encontrado"));
+    client.convertToCliet();
+    return new ClientDTO(client);
   }
 
   @Override
+  @Transactional
   public ClientDTO insert(ClientDTO dto) {
-    return null;
+    Client client = new Client();
+    copyDtoToEntity(dto,client);
+    repository.save(client);
+    return new ClientDTO(client);
   }
 
   @Override
@@ -41,5 +49,12 @@ public class ClientServiceImpl implements ClientService {
   @Override
   public void delete(Long id) {
 
+  }
+  private void copyDtoToEntity(ClientDTO dto, Client entity) {
+    entity.setName(dto.getName());
+    entity.setCpf(dto.getCpf());
+    entity.setBirthDate(dto.getBirthDate());
+    entity.setChildren(dto.getChildren());
+    entity.setIncome(dto.getIncome());
   }
 }

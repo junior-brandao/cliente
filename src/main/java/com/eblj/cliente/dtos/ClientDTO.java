@@ -1,35 +1,35 @@
 package com.eblj.cliente.dtos;
 
 import com.eblj.cliente.entities.Client;
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.*;
-import org.hibernate.validator.constraints.br.CPF;
-
 import java.time.LocalDate;
 
 public class ClientDTO {
 
   @NotBlank(message = "Campo deve ser preenchido")
-  @Column(unique = true)
   @Size(min = 3,max = 45, message = "Campo nome deve conter no mínimo {min} e no máximo {max} caracteres")
   private String name;
   @NotBlank(message = "Campo deve ser preenchido")
-  @Column(unique = true)
   @Size(min = 11, message = "Campo nome deve conter no mínimo {min} digitus")
   private String cpf;
   @Past(message = "A data de nascimento deve ser anterior a data atual.")
-  @NotBlank
   private LocalDate birthDate;
   @PositiveOrZero(message = "Valor do campo informado deve ser maior ou igual a 0")
+  @NotNull(message = "Campo deve ser preenchido")
   private Integer children;
+
+  @Positive(message = "Valor deve ser maior que 0")
+  @NotNull(message = "Campo deve ser preenchido")
+  private Double income;
 
   public ClientDTO(){}
 
-  public ClientDTO(String name, String cpf, LocalDate birthDate, Integer children) {
+  public ClientDTO(String name, String cpf, LocalDate birthDate, Integer children, Double income) {
     this.name = name;
     this.cpf = cpf;
     this.birthDate = birthDate;
     this.children = children;
+    this.income = income;
   }
 
   public ClientDTO(Client entity) {
@@ -37,6 +37,7 @@ public class ClientDTO {
     cpf = entity.getCpf();
     birthDate = entity.getBirthDate();
     children = entity.getChildren();
+    income = entity.getIncome();
   }
 
   public String getName() {
@@ -69,5 +70,14 @@ public class ClientDTO {
 
   public void setChildren(Integer children) {
     this.children = children;
+  }
+
+
+  public Double getIncome() {
+    return income;
+  }
+
+  public void setIncome(Double income) {
+    this.income = income;
   }
 }
