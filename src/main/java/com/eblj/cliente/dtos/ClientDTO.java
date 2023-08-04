@@ -12,7 +12,7 @@ public class ClientDTO {
   @NotBlank(message = "Campo deve ser preenchido")
   @Size(min = 11, message = "Campo nome deve conter no mínimo {min} digitus")
   private String cpf;
-  @Past(message = "A data de nascimento deve ser anterior a data atual.")
+  @PastOrPresent(message = "A data de nascimento deve ser anterior a data atual.")
   private LocalDate birthDate;
   @PositiveOrZero(message = "Valor do campo informado deve ser maior ou igual a 0")
   @NotNull(message = "Campo deve ser preenchido")
