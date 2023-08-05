@@ -3,7 +3,6 @@
 #### Formação Desenvolvedor Moderno 
 #### Módulo: Back end 
 #### Capítulo: API REST, camadas, CRUD, exceções, validações
-<div align= "center">
 
 
  [![Java](https://jdk.java.net/images/oracle.png)](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) 
@@ -14,7 +13,6 @@
 
  [![Postman](src/main/java/com/eblj/cliente/assets/postman.png)](https://www.postman.com/)
 
-</div>
 
 ## Features: CRUD de clientes
 Você deverá entregar um projeto Spring Boot contendo um CRUD completo de web services REST para acessar um recurso de clientes, contendo as cinco operações básicas aprendidas no capítulo:
